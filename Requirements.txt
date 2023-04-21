@@ -1,0 +1,7 @@
+psycopg2 must be installed
+
+
+
+connection = pg2.connect(host='localhost', port='5432',
+                              database='Products', user='postgres', password='‌INSERT YOUR PASSWORD')
+

@@ -1,0 +1,81 @@
+product_id;product_name;calories
+1;Apple;52
+2;Apricot;48
+3;Avocado;160
+4;Banana;89
+5;Blackberries;43
+6;Blueberries;57
+7;Cranberries;46
+8;Coconut;354
+9;Cherimoya;75
+10;Dates medjool;277
+11;Fig;74
+12;Grapefruit;42
+13;Grapes;69
+14;Kiwi fruit;58
+15;Lemon;29
+16;Mango;60
+17;Melon honeydew;36
+18;Nectarine;39
+19;Orange;47
+20;Papaya;43
+21;Peach;42
+22;Pear;57
+23;Pineapple;50
+24;Plum;46
+25;Raspberries;52
+26;Rhubarb;21
+27;Strawberries;32
+28;Tomato;18
+29;Watermelon;30
+30;Alfalfa sprouted;23
+31;Artichoke;53
+32;Asparagus;20
+33;Broccoli;34
+34;Brussels sprouts;43
+35;Butternut squash;45
+36;Cabbage red;31
+37;Carrots;41
+38;Cauliflower;25
+39;Celery;14
+40;Chard;19
+41;Corn;86
+42;Cucumbers;15
+43;Eggplant;25
+44;Garlic;149
+45;Green beans;31
+46;Green pepper;20
+47;Kale;35
+48;Kidney beans canned;135
+49;Lentils canned;165
+50;Lettuce;14
+51;Lima beans canned;122
+52;Mushrooms;22
+53;Navy beans canned;113
+54;Okra fried;217
+55;Olives  black;116
+56;Onions;40
+57;Peas green;81
+58;Pickles;12
+59;Rice white cooked;96
+60;Spinach cooked;27
+61;Tater tots;236
+62;Turnip greens;132
+63;Zucchini;21
+64;Veal roasted;229
+65;Venison roasted;190
+66;Rabbit cooked;172
+67;Lamb cooked;265
+68;Ground beef cooked;260
+69;Beef steak fried;235
+70;Pork belly cooked;518
+71;Roast chicken;223
+72;Chicken breast cooked;175
+73;Duck cooked;336
+74;Goose roasted;304
+75;Turkey light meat roasted;169
+76;Butter;717
+77;Cheddar cheese;408
+78;Milk semi-skimmed;50
+79;Milk whole;60
+80;Yogurt plain low-fat;63
