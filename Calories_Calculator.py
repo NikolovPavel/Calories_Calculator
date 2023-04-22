@@ -62,6 +62,10 @@ while food != 'No':
         print('No such food in the database!')
     food = input('Are you going to eat something else? : ')
 
+# Koko ideqta mi za toq print dolu e slednata:
+# v bydeshte da slojim promenliva koqto da opredelq kolko kalorii trqbva da qde 4oveka na den(v zavisimost dali iska
+# da ka4va ili svalq i toq print da mu izkarva
+# kolko mu ostavat za denq, no za momenta shte go ostavq prosto taka da go vidish.
 print(f'Total calories for your meal : {total_calories}.')
 
 # database connection closed
