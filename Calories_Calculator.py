@@ -1,4 +1,5 @@
 import psycopg2 as pg2
+import math
 # database connection
 
 connection = pg2.connect(host='localhost', port='5432',
@@ -33,12 +34,37 @@ def suggested_weight(height, gender):
         return f"Suggested weight is around {female} kg."
 
 
+def basal_metabolism_calculation(gender, weight, height, age, activity):
+    if gender == 'male':
+        bmr = float(weight * 10 + (6.25 * height - 5 * age) + 5)
+    else:
+        bmr = float(weight * 10 + (6.25 * height - age * 5) - 161)
+
+    if activity == 'none':
+        return f'The required calories for maintaining your weight are {math.ceil(bmr * 1.2)} per day!'
+    elif activity == 'low':
+        return f'The required calories for maintaining your weight are {math.ceil(bmr * 1.375)} per day!'
+    elif activity == 'medium':
+        return f'The required calories for maintaining your weight are {math.ceil(bmr * 1.55)} per day!'
+    elif activity == 'high':
+        return f'The required calories for maintaining your weight are {math.ceil(bmr * 1.725)} per day!'
+    elif activity == 'very high':
+        return f'The required calories for maintaining your weight are {math.ceil(bmr * 1.9)} per day!'
+
+
+age = int(input("Your age: "))
 weight = int(input("Weight in kilograms: "))
 height = int(input("Height in centimeters: "))
 gender = input("Gender: ").lower()
-
+activity = input("What is your activity? Choose one of these: \n" 
+                 "none - no physical activity at all \n"
+                 "low  - 1 to 3 workouts per week \n"
+                 "medium - 3 to 5 workouts per week \n"
+                 "high - 6 to 7 workouts per week \n"
+                 "very high - 6 -7 very intensive workouts per week:   ")
 print(bmi(weight, height))
 print(suggested_weight(height, gender))
+print(basal_metabolism_calculation(gender, weight, height, age, activity))
 
 # food input and calories calculation
 # all products begin with capital letter and are in the following format 'Apple' !
@@ -56,7 +82,7 @@ while food != 'No':
             print(f'Calories for 100gr of {food} are {row[2]}.')
             print(f'Total calories for your meal : {total_calories}.')
             food_found = True
-            food = input('Are you going to eat something else? : ')
+            break
 
     if not food_found:
         print('No such food in the database!')
