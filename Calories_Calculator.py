@@ -13,6 +13,7 @@ rows = cur.fetchall()
 
 # body mass index and weight initial calculation
 
+
 def bmi(weight, height):
     bmi = float(f"{weight / height ** 2 * 10000:.1f}")
     under_or_overweight = ""
@@ -41,15 +42,15 @@ def basal_metabolism_calculation(gender, weight, height, age, activity):
         bmr = float(weight * 10 + (6.25 * height - age * 5) - 161)
 
     if activity == 'none':
-        return f'The required calories for maintaining your weight are {math.ceil(bmr * 1.2)} per day!'
+        return math.ceil(bmr * 1.2)
     elif activity == 'low':
-        return f'The required calories for maintaining your weight are {math.ceil(bmr * 1.375)} per day!'
+        return math.ceil(bmr * 1.375)
     elif activity == 'medium':
-        return f'The required calories for maintaining your weight are {math.ceil(bmr * 1.55)} per day!'
+        return math.ceil(bmr * 1.55)
     elif activity == 'high':
-        return f'The required calories for maintaining your weight are {math.ceil(bmr * 1.725)} per day!'
+        return math.ceil(bmr * 1.725)
     elif activity == 'very high':
-        return f'The required calories for maintaining your weight are {math.ceil(bmr * 1.9)} per day!'
+        return math.ceil(bmr * 1.9)
 
 
 age = int(input("Your age: "))
@@ -64,22 +65,27 @@ activity = input("What is your activity? Choose one of these: \n"
                  "very high - 6 -7 very intensive workouts per week:   ")
 print(bmi(weight, height))
 print(suggested_weight(height, gender))
-print(basal_metabolism_calculation(gender, weight, height, age, activity))
+calories_per_day = basal_metabolism_calculation(gender, weight, height, age, activity)
+print(f'The required calories for maintaining your weight are {calories_per_day} per day!')
 
 # food input and calories calculation
 # all products begin with capital letter and are in the following format 'Apple' !
 food = input('What are you going to eat? : ')
+
 food_found = False
 total_calories = 0
 
 # while loop, working with the rows from the database
 
 while food != 'No':
+    grams = int(input('How many grams is your food? : '))
     for row in rows:
         food_found = False
         if food in row:
-            total_calories += int(row[2])
+            current_calories = math.ceil((int(row[2]) / 100) * grams)
+            total_calories += current_calories
             print(f'Calories for 100gr of {food} are {row[2]}.')
+            print(f'Calories for {grams}gr of {food} are {current_calories}')
             print(f'Total calories for your meal : {total_calories}.')
             food_found = True
             break
@@ -88,12 +94,19 @@ while food != 'No':
         print('No such food in the database!')
     food = input('Are you going to eat something else? : ')
 
+
+
+def calories_remaining(daily_cal, total_cal):
+    return calories_per_day - total_calories
+
 # Koko ideqta mi za toq print dolu e slednata:
 # v bydeshte da slojim promenliva koqto da opredelq kolko kalorii trqbva da qde 4oveka na den(v zavisimost dali iska
 # da ka4va ili svalq i toq print da mu izkarva
 # kolko mu ostavat za denq, no za momenta shte go ostavq prosto taka da go vidish.
-print(f'Total calories for your meal : {total_calories}.')
 
+
+print(f'Total calories for your meal : {total_calories}.')
+print(f'Calories remaining for the day : {calories_remaining(calories_per_day, total_calories)}')
 # database connection closed
 connection.close()
 
