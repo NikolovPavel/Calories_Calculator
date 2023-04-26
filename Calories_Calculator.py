@@ -35,6 +35,8 @@ def suggested_weight(height, gender):
         return f"Suggested weight is around {female} kg."
 
 
+# calculation required calories for maintaining your weight
+
 def basal_metabolism_calculation(gender, weight, height, age, activity):
     if gender == 'male':
         bmr = float(weight * 10 + (6.25 * height - 5 * age) + 5)
@@ -95,18 +97,14 @@ while food != 'No':
     food = input('Are you going to eat something else? : ')
 
 
+# calories remaining for the day after the meal
+
 
 def calories_remaining(daily_cal, total_cal):
     return calories_per_day - total_calories
-
-# Koko ideqta mi za toq print dolu e slednata:
-# v bydeshte da slojim promenliva koqto da opredelq kolko kalorii trqbva da qde 4oveka na den(v zavisimost dali iska
-# da ka4va ili svalq i toq print da mu izkarva
-# kolko mu ostavat za denq, no za momenta shte go ostavq prosto taka da go vidish.
 
 
 print(f'Total calories for your meal : {total_calories}.')
 print(f'Calories remaining for the day : {calories_remaining(calories_per_day, total_calories)}')
 # database connection closed
 connection.close()
-
